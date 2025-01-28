@@ -1,10 +1,16 @@
 {
   "name": "lutra",
-  "displayName": "lutra",
+  "displayName": "Lutra UI",
   "description": "Lutra UI extension",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "engines": {
     "vscode": "^1.93.0"
+  },
+  "icon": "icon.png",
+  "publisher": "lutra",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lutra-ui/vscode.git"
   },
   "categories": [
     "Other"
@@ -23,6 +29,56 @@
       {
         "id": "svelte",
         "aliases": ["Svelte"]
+      }
+    ],
+    "configuration": {
+      "title": "Lutra",
+      "properties": {
+        "lutra.cssGlobPatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/*.css",
+            "**/node_modules/lutra/**/*.css"
+          ],
+          "description": "Glob patterns to search for CSS files containing variables"
+        },
+        "lutra.svelteGlobPatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/node_modules/lutra/**/*.svelte"
+          ],
+          "description": "Glob patterns to search for Svelte components containing CSS properties"
+        },
+        "lutra.excludePatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/node_modules/**",
+            "**/dist/**",
+            "**/.svelte-kit/**",
+            "**/build/**"
+          ],
+          "description": "Glob patterns for folders to exclude from both CSS and Svelte file searches"
+        },
+        "lutra.enableLogging": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable detailed logging in the output panel for debugging"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "lutra.rescanCSSVariables",
+        "title": "Lutra: Rescan CSS Variables"
       }
     ]
   },
